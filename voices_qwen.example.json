@@ -1,0 +1,6 @@
+{
+  "Ma voix": {
+    "ref_audio": "voices/ma-voix.wav",
+    "ref_text": "Transcription exacte de l'extrait audio de reference."
+  }
+}

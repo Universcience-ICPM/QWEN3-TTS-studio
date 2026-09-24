@@ -1,21 +1,53 @@
 # Large model files (users download separately)
 models/
+.cache/
+huggingface/
+*.safetensors
+*.gguf
+*.onnx
+*.ckpt
+*.pt
+*.pth
 
-# Virtual environment
+# Virtual environments
 .venv/
+.venv-windows/
+env_qwen/
+venv/
 
-# Temp files
+# Legacy prototypes (the supported entry point is botQwen2.py)
+/main.py
+/botQwen.py
+/botQwen1.py
+/botQwen1-copie.py
+/botQwen copie.py
+/botQwen2 copie.py
+
+# Generated and temporary files
 temp_*/
 temp_convert_*.wav
+/*.wav
+/*.mp3
+/*.m4a
+/*.flac
+/conversation_export.json
+*.log
 
 # User data (keep folder structure)
 voices/*
 !voices/.gitkeep
+voices_qwen.json
+settings_narrateur.json
+contexte.txt
 outputs/*
 !outputs/.gitkeep
 
 # System files
 .DS_Store
 __pycache__/
+.pytest_cache/
+.ruff_cache/
 *.pyc
 *.pyo
+.idea/
+.vscode/

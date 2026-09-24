@@ -1,0 +1,13 @@
+{
+  "pause_strong": 500,
+  "pause_comma": 300,
+  "pause_triple_excl": 800,
+  "pause_double_semi_min": 700,
+  "pause_double_semi_max": 1500,
+  "pause_double_colon_min": 1000,
+  "pause_double_colon_max": 3000,
+  "lexicon": {
+    "H.G.W.": "Age Vai",
+    "M.": "Monsieur"
+  }
+}
