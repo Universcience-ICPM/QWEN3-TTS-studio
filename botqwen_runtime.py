@@ -149,6 +149,23 @@ class MLXRuntime(BaseRuntime):
         if language:
             mlx_kwargs["lang_code"] = str(language).lower()
 
+        if mlx_kwargs.get("ref_audio") and not mlx_kwargs.get("ref_text"):
+            # Voix clonée en mode « timbre » (sans le texte de la référence) : on appelle le modèle
+            # directement, car generate_audio voudrait transcrire la référence (et télécharger Whisper).
+            from mlx_audio.utils import load_audio
+
+            ref = load_audio(str(mlx_kwargs["ref_audio"]), sample_rate=model.sample_rate)
+            morceaux = []
+            for res in model.generate(
+                text=mlx_kwargs["text"], ref_audio=ref, ref_text=None,
+                lang_code=mlx_kwargs.get("lang_code", "auto"),
+                temperature=float(mlx_kwargs.get("temperature", 0.7)),
+                top_k=50, top_p=1.0, max_tokens=1200, verbose=False,
+            ):
+                a = np.asarray(res.audio, dtype=np.float32)
+                morceaux.append(a.mean(axis=-1) if a.ndim > 1 else a)
+            return np.concatenate(morceaux) if morceaux else None
+
         wav_path = Path(temp_dir) / "audio_000.wav"
         wav_path.unlink(missing_ok=True)
         generate_audio(model=model, output_path=temp_dir, **mlx_kwargs)
@@ -306,12 +323,18 @@ class CudaRuntime(BaseRuntime):
             ref_audio = kwargs.get("ref_audio")
             if not ref_audio:
                 raise ValueError("Le modele Base exige un audio de reference")
+            clone_kwargs = dict(generation_kwargs)
+            if not kwargs.get("ref_text"):
+                # mode « timbre » : seul le timbre de la référence est utilisé
+                import inspect
+                if "x_vector_only_mode" in inspect.signature(model.generate_voice_clone).parameters:
+                    clone_kwargs["x_vector_only_mode"] = True
             wavs, _ = model.generate_voice_clone(
                 text=text,
                 language=language,
                 ref_audio=ref_audio,
                 ref_text=kwargs.get("ref_text"),
-                **generation_kwargs,
+                **clone_kwargs,
             )
         elif model_type == "design":
             wavs, _ = model.generate_voice_design(

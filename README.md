@@ -1,6 +1,7 @@
-# botQwen2 - atelier vocal local avec Qwen3-TTS
+# Voix - atelier vocal local avec Qwen3-TTS
 
-`botQwen2.py` est l'application principale de ce dossier. Elle réunit dans une
+**Voix** est le nom de l'application. `botQwen2.py` reste son point d'entrée
+technique afin de préserver les installations existantes. Elle réunit dans une
 interface Gradio :
 
 - la synthèse vocale directe avec Qwen3-TTS ;
@@ -11,11 +12,17 @@ interface Gradio :
 - un assistant vocal local associant un STT local, Ollama et Qwen3-TTS ;
 - un mode speech-to-speech avec transcription et estimation d'émotion ;
 - un dictionnaire de prononciation ;
-- un banc de test séparé pour comparer les directions d'acteur.
+- un banc de test séparé pour comparer les directions d'acteur ;
+- un prototype Stable Audio séparé pour générer bruitages et ambiances ;
+- une adaptation sonore automatique des romans, organisée et synchronisable
+  par chapitre, avec un rapport des prompts réellement envoyés à Stable Audio.
 
 Tout le traitement vocal est local. Aucune clé API n'est nécessaire. Ollama
 doit simplement être lancé localement pour les fonctions de conversation,
 de résumé et de réponse à partir d'un contexte.
+
+Pour commencer sans parcourir toute la documentation technique, consulter le
+[mode d'emploi de Voix](MODE_D_EMPLOI_VOIX.md).
 
 ## État des plateformes
 
@@ -337,10 +344,23 @@ QWEN/
 ├── botQwen2.py                 application principale
 ├── botqwen_runtime.py          backends MLX et NVIDIA CUDA
 ├── test_actor_direction.py     comparateur de directions d'acteur
+├── sfx_app.py                  interface autonome de bruitages et ambiances
+├── sfx_runtime.py              adaptateur du moteur Stable Audio isole
+├── scene_sfx.py                analyse de roman et montage par chapitre
 ├── verify_runtime.py           diagnostic sans téléchargement de modèle
 ├── install_windows_nvidia.ps1  installation Windows
 ├── start_windows_nvidia.ps1    lancement Windows
+├── stop_windows_nvidia.ps1     arrêt contrôlé du serveur Windows
+├── LANCER_VOIX.bat             lancement Windows par double-clic
+├── ARRETER_VOIX.bat            arrêt Windows par double-clic
+├── LANCER_BOTQWEN.bat          lancement Windows par double-clic
+├── ARRETER_BOTQWEN.bat         arrêt Windows par double-clic
+├── install_sfx_macos.sh        installation SFX sur Apple Silicon
+├── start_sfx_macos.sh          lancement du Studio SFX sur Mac
+├── install_sfx_windows.ps1     installation SFX TFLite sous Windows
+├── start_sfx_windows.ps1       lancement du Studio SFX sous Windows
 ├── requirements-windows-nvidia.txt
+├── STABLE_AUDIO_SFX.md         installation et utilisation du prototype SFX
 ├── qwen3_tts_emotif_codex.md   protocole de recherche émotionnelle
 ├── settings_narrateur.json     lexique et réglages des pauses
 ├── voices_qwen.json            index des profils clonés
@@ -410,6 +430,13 @@ Le backend peut aussi être forcé avec `BOTQWEN_BACKEND=mlx` ou
 
 ## Installation Windows NVIDIA
 
+Pour installer le projet depuis une copie sur disque dur, sans utiliser GitHub,
+consulter [INSTALLATION_WINDOWS_DISQUE.md](INSTALLATION_WINDOWS_DISQUE.md).
+
+Le prototype autonome de bruitages est documenté dans
+[STABLE_AUDIO_SFX.md](STABLE_AUDIO_SFX.md). Son moteur et ses dépendances sont
+installés séparément de Qwen3-TTS.
+
 ### Prérequis
 
 - Windows 10 ou 11 en 64 bits ;
@@ -450,6 +477,19 @@ Le canal PyTorch par défaut est `cu128`. Pour un autre pilote :
 
 ### Lancement
 
+Après l'installation initiale, double-cliquer sur :
+
+```text
+LANCER_VOIX.bat
+```
+
+Le bouton `Arrêter Voix` de l'interface ferme proprement le serveur. En cas
+de navigateur bloqué, `ARRETER_VOIX.bat` cible uniquement le processus dont
+le PID a été enregistré par le lanceur. Fermer le seul onglet du navigateur ne
+suffit pas à arrêter l'application.
+
+Le lancement manuel reste disponible :
+
 ```powershell
 .\start_windows_nvidia.ps1
 ```
@@ -457,6 +497,11 @@ Le canal PyTorch par défaut est `cu128`. Pour un autre pilote :
 Le premier lancement télécharge CustomVoice 1.7B, Whisper Small puis, lors de
 la première activation du clonage, Base 1.7B. Les fichiers restent dans le
 cache Hugging Face de l'utilisateur.
+
+L'installation ne se relance pas à chaque session : utilisez ensuite seulement
+`start_windows_nvidia.ps1`. Le changement CustomVoice/Base est synchronisé avec
+la génération afin qu'une voix clonée ne parte jamais avec le modèle natif
+encore en mémoire. Le clonage reçoit aussi explicitement la langue sélectionnée.
 
 Pour une carte disposant de moins de VRAM :
 
@@ -546,3 +591,4 @@ la conversation vocale en temps réel risque de ne pas être confortable.
 - [Modèles MLX Community](https://huggingface.co/mlx-community)
 - [Ollama](https://ollama.com/)
 - [Gradio](https://www.gradio.app/)
+- [Stable Audio 3](https://github.com/Stability-AI/stable-audio-3)

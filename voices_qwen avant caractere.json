@@ -1,0 +1,868 @@
+{
+  "Homme Rajiabo": {
+    "ref_audio": "voices/H-Rajiabo.wav",
+    "ref_text": "Le désert. Je n'oublierai jamais le moment où mes semelles ont touché le sable brûlant du Sahara. C'était comme franchir un seuil invisible entre la vie et quelque chose qui ressemblait déjà à la mort. Le soleil nous tombait dessus comme un marteau.",
+    "emotions": {
+      "excited": {
+        "ref_audio": "voices/H-Rajiabo-excite.mp3",
+        "ref_text": "Oh oui !!! trop bien ! J'adore cette idée ! Incroyable, vraiment ! Ça va être génial ! Je suis trop content ! Waouh !!! super nouvelle ! C'est exactement ça ! Trop impatient ! Quelle chance ! On y est presque ! Ça promet ! J'ai hâte ! C'est fantastique ! Oui, enfin ! Trop fort ! Oh là là, trop bien ! Ça, c'est une super idée ! J'en peux plus d'attendre ! C'est exactement ce que je voulais !",
+        "reglages": {
+          "temperature": 0.7,
+          "mode_clone": "timbre",
+          "ressemblance_min": 0.983,
+          "mots_rates": 0.05,
+          "verdict": "stable",
+          "teste_le": "2026-10-08"
+        }
+      },
+      "happy": {
+        "ref_audio": "voices/H-Rajiabo-joie.mp3",
+        "ref_text": "Salut, quelle belle journée ! Super nouvelle ! Trop bien, merci ! Je suis ravie de te voir. Génial, on y va ! Ça me fait super plaisir. C'est vraiment chouette. Quelle bonne surprise ! Bravo, tu as assuré ! On va s'amuser ! Bonjour, content de te voir ! Trop cool, j'adore ! C'est parfait ! On commence ? Quelle excellente idée !",
+        "reglages": {
+          "temperature": 0.5,
+          "mode_clone": "timbre",
+          "ressemblance_min": 0.985,
+          "mots_rates": 0.05,
+          "verdict": "stable",
+          "teste_le": "2026-10-08"
+        }
+      },
+      "angry": {
+        "ref_audio": "voices/H-Rajiabo-colere.mp3",
+        "ref_text": "Ça suffit maintenant ! Je n'accepte pas ça. C'est inadmissible ! J'en ai assez. Pourquoi tu fais ça ? Ce n'est pas normal ! Je suis vraiment agacé. Arrête tout de suite ! Tu dépasses les bornes. Je ne suis pas d'accord. Tu plaisantes, j'espère ! Ça, c'est hors de question !",
+        "reglages": {
+          "temperature": 0.7,
+          "mode_clone": "timbre",
+          "ressemblance_min": 0.984,
+          "mots_rates": 0.05,
+          "verdict": "stable",
+          "teste_le": "2026-10-08"
+        }
+      },
+      "sad": {
+        "ref_audio": "voices/H-Rajiabo-triste.mp3",
+        "ref_text": "Ça me manque beaucoup. Je ne vais pas bien. C'est vraiment dommage. Je suis un peu perdu. J'ai le cœur lourd. Je suis triste aujourd'hui. Tout semble plus calme. Je n'ai pas le moral. C'est dur à accepter. J'aurais aimé autrement. Ça me touche vraiment. Je n'arrive pas à sourire.",
+        "reglages": {
+          "temperature": 0.7,
+          "mode_clone": "timbre",
+          "ressemblance_min": 0.984,
+          "mots_rates": 0.05,
+          "verdict": "stable",
+          "teste_le": "2026-10-08"
+        }
+      }
+    },
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.987,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Homme Dario": {
+    "ref_audio": "voices/H-Dario.wav",
+    "ref_text": "La terre s’était mise à respirer plus fort cette nuit-là, comme si quelque chose, en dessous, s’apprêtait à remonter à la surface. Tahina ne dormait pas. Il entendait le vent tourner au-dessus du toit de tôle, l’odeur de la pluie s’approcher, cette odeur particulière de terre rouge qui gonfle avant l’orage, de mangues tombées et de poussière. On disait que les travaux commenceraient demain, mais personne n’avait vraiment cru qu’ils oseraient. L’autoroute n’était qu’un mot de radio, un ruban de promesses qu’on enroule autour des bouches pour les faire taire. Pourtant, au matin, les casseroles tremblèrent sur le mur et les chiens se mirent à aboyer d’un même élan.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.983,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "jeune Femme": {
+    "ref_audio": "voices/jeuneFemme.wav",
+    "ref_text": "ne pouvaient pas s'évaluer à partir de ces seuls chiffres. Si vous voulez penser en pourcentage, alors il faut en ajouter d'autres. Prenez celui-là par exemple. 33% des jeunes canards qui sont au chômage. Ou cet autre-là. 3% seulement sont diplômés dans l'enseignement supérieur. Les politiques de rééquilibrage lancées dans les années 80 n'ont pas pu effacer les inégalités entre les populations.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.988,
+      "mots_rates": 0.0,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Homme docu": {
+    "ref_audio": "voices/H-docu.wav",
+    "ref_text": "Le guépard s'approche prudemment du point d'eau. Sa démarche élégante et ses mouvements précis révèlent son adaptation à la savane. Malgré sa vitesse légendaire, il reste vigilant car d'autres prédateurs fréquentent ses lieux.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.987,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Homme Garel": {
+    "ref_audio": "voices/H-Garel.wav",
+    "ref_text": "Ils l'ont écouté sans bouger, comme s'ils avaient pensé qu'au moindre mouvement brusque, elle s'en irait. Maintenant que le silence est revenu, Sahlia pose sa première question avec une sorte d'urgence, inquiète de voir la journaliste se lever à tout moment et tourner les talons.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.987,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Homme Marielle": {
+    "ref_audio": "voices/H-Marielle.wav",
+    "ref_text": "Non mais je suis Jean-Pierre Marielle, le vrai, l'acteur. Je peux connaître votre nom ? Picoli comment ? Il y en a plein des picolis, j'ouvre un annuaire, j'en trouve un wagon. Je viens chercher mon pot d'eau chaude. Je lâcherai votre main quand vous m'aurez donné mon pot d'eau chaude. Très important.",
+    "emotions": {
+      "excited": {
+        "ref_audio": "voices/F-Marielle-excite.mp3",
+        "ref_text": "Oh oui !!! trop bien ! J'adore cette idée ! Incroyable, vraiment ! Ça va être génial ! Je suis trop content ! Waouh !!! super nouvelle ! C'est exactement ça ! Trop impatient ! Quelle chance ! On y est presque ! Ça promet ! J'ai hâte ! C'est fantastique ! Oui, enfin ! Trop fort ! Oh là là, trop bien ! Ça, c'est une super idée ! J'en peux plus d'attendre ! C'est exactement ce que je voulais !"
+      },
+      "happy": {
+        "ref_audio": "voices/F-Marielle-joie.mp3",
+        "ref_text": "Salut, quelle belle journée ! Super nouvelle ! Trop bien, merci ! Je suis ravie de te voir. Génial, on y va ! Ça me fait super plaisir. C'est vraiment chouette. Quelle bonne surprise ! Bravo, tu as assuré ! On va s'amuser ! Bonjour, content de te voir ! Trop cool, j'adore ! C'est parfait ! On commence ? Quelle excellente idée !"
+      },
+      "angry": {
+        "ref_audio": "voices/H-Marielle-colere.mp3",
+        "ref_text": "Ça suffit maintenant ! Je n'accepte pas ça. C'est inadmissible ! J'en ai assez. Pourquoi tu fais ça ? Ce n'est pas normal ! Je suis vraiment agacé. Arrête tout de suite ! Tu dépasses les bornes. Je ne suis pas d'accord. Tu plaisantes, j'espère ! Ça, c'est hors de question !",
+        "reglages": {
+          "temperature": 0.5,
+          "mode_clone": "timbre",
+          "ressemblance_min": 0.97,
+          "mots_rates": 0.05,
+          "verdict": "stable",
+          "teste_le": "2026-10-08"
+        }
+      },
+      "sad": {
+        "ref_audio": "voices/F-Marielle-triste.mp3",
+        "ref_text": "Ça me manque beaucoup. Je ne vais pas bien. C'est vraiment dommage. Je suis un peu perdu. J'ai le cœur lourd. Je suis triste aujourd'hui. Tout semble plus calme. Je n'ai pas le moral. C'est dur à accepter. J'aurais aimé autrement. Ça me touche vraiment. Je n'arrive pas à sourire."
+      }
+    },
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.983,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Homme vieux": {
+    "ref_audio": "voices/H-vieux.wav",
+    "ref_text": "Regarde cette fleur, mon ami. Comme Rome, elle s'épanouit, puis se fane. N'est-ce pas là toute la sagesse du monde ? Nous bâtissons des empires, nous créons des lois, mais le temps, lui, murmure toujours la même vérité : tout est éphémère.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.981,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Femme Jaguar": {
+    "ref_audio": "voices/F-jaguar.wav",
+    "ref_text": "traversant des vergers imaginaires avec une lenteur acadienne, seulement vécu de sa tunique, en mangeant des feuilles de framboisier et en urinant sur des graines d'orge, dont on disait que la germination rapide indiquait l'arrivée précoce de l'enfant. Elle se déplaçait là où elle voulait, à l'heure qu'elle voulait, constatant ses cuisses se remplir d'eau, ses seins de lait, ses hanches s'écarter.",
+    "emotions": {
+      "sad": {
+        "ref_audio": "voices/Femme Jaguar-sad.mp3",
+        "ref_text": "Salut, quelle belle journée ! Super nouvelle ! Trop bien, merci ! Je suis ravi de te voir ! Génial, on y va ! Ça me fait super plaisir ! C'est vraiment chouette ! Quelle bonne surprise ! Bravo, tu as assuré ! On va s'amuser ! Bonjour, content de te voir ! Trop cool, j'adore ! C'est parfait ! On commence ? Quelle excellente idée !",
+        "reglages": {
+          "temperature": 0.5,
+          "mode_clone": "imitation",
+          "ressemblance_min": 0.987,
+          "mots_rates": 0.0,
+          "verdict": "stable",
+          "teste_le": "2026-10-08"
+        }
+      },
+      "happy": {
+        "ref_audio": "voices/Femme Jaguar-happy.mp3",
+        "ref_text": "Salut, quelle belle journée ! Super nouvelle ! Trop bien, merci ! Je suis ravi de te voir ! Génial, on y va ! Ça me fait super plaisir ! C'est vraiment chouette ! Quelle bonne surprise ! Bravo, tu as assuré ! On va s'amuser ! Bonjour, content de te voir ! Trop cool, j'adore ! C'est parfait ! On commence ? Quelle excellente idée !",
+        "reglages": {
+          "temperature": 0.7,
+          "mode_clone": "imitation",
+          "ressemblance_min": 0.988,
+          "mots_rates": 0.0,
+          "verdict": "stable",
+          "teste_le": "2026-10-08"
+        }
+      }
+    },
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.982,
+      "mots_rates": 0.025,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Femme Emma": {
+    "ref_audio": "voices/F-Emma.wav",
+    "ref_text": "Ce qui était généralement et naturellement assorti d'une vive curiosité de le voir, mais le compliment était si peu retourné qu'il n'y avait jamais mis les pieds de toute sa vie. Il avait souvent été question qu'il vienne rendre visite à son père, mais rien ne s'était produit. À présent, avec le mariage de son père, il était communément admis que cette visite devait avoir lieu.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.985,
+      "mots_rates": 0.0,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Femme Fée": {
+    "ref_audio": "voices/F-Fee.wav",
+    "ref_text": "Bonsoir et bienvenue chez la Fée du Sommeil. Ce soir je vais vous lire l'histoire Le Petit Prince d'Antoine de Saint-Exupéry. Lorsque j'avais six ans, j'ai vu, une fois, une magnifique image dans un livre sur la forêt vierge qui s'appelait Histoire Vécue. Ça représentait un serpent boa qui avalait un fauve. Les serpents boa avalent leur proie tout entière sans la mâcher.",
+    "emotions": {
+      "excited": {
+        "ref_audio": "voices/F-fee-excite.mp3",
+        "ref_text": "Oh oui !!! trop bien ! J'adore cette idée ! Incroyable, vraiment ! Ça va être génial ! Je suis trop content ! Waouh !!! super nouvelle ! C'est exactement ça ! Trop impatient ! Quelle chance ! On y est presque ! Ça promet ! J'ai hâte ! C'est fantastique ! Oui, enfin ! Trop fort ! Oh là là, trop bien ! Ça, c'est une super idée ! J'en peux plus d'attendre ! C'est exactement ce que je voulais !",
+        "reglages": {
+          "temperature": 0.7,
+          "mode_clone": "timbre",
+          "ressemblance_min": 0.982,
+          "mots_rates": 0.0,
+          "verdict": "stable",
+          "teste_le": "2026-10-08"
+        }
+      },
+      "happy": {
+        "ref_audio": "voices/F-fee-joie.mp3",
+        "ref_text": "Salut, quelle belle journée ! Super nouvelle ! Trop bien, merci ! Je suis ravie de te voir. Génial, on y va ! Ça me fait super plaisir. C'est vraiment chouette. Quelle bonne surprise ! Bravo, tu as assuré ! On va s'amuser ! Bonjour, content de te voir ! Trop cool, j'adore ! C'est parfait ! On commence ? Quelle excellente idée !",
+        "reglages": {
+          "temperature": 0.7,
+          "mode_clone": "timbre",
+          "ressemblance_min": 0.985,
+          "mots_rates": 0.0,
+          "verdict": "stable",
+          "teste_le": "2026-10-08"
+        }
+      },
+      "angry": {
+        "ref_audio": "voices/F-fee-colere.mp3",
+        "ref_text": "Ça suffit maintenant ! Je n'accepte pas ça. C'est inadmissible ! J'en ai assez. Pourquoi tu fais ça ? Ce n'est pas normal ! Je suis vraiment agacé. Arrête tout de suite ! Tu dépasses les bornes. Je ne suis pas d'accord. Tu plaisantes, j'espère ! Ça, c'est hors de question !",
+        "reglages": {
+          "temperature": 0.7,
+          "mode_clone": "timbre",
+          "ressemblance_min": 0.984,
+          "mots_rates": 0.0,
+          "verdict": "stable",
+          "teste_le": "2026-10-08"
+        }
+      },
+      "sad": {
+        "ref_audio": "voices/F-fee-triste.mp3",
+        "ref_text": "Ça me manque beaucoup. Je ne vais pas bien. C'est vraiment dommage. Je suis un peu perdu. J'ai le cœur lourd. Je suis triste aujourd'hui. Tout semble plus calme. Je n'ai pas le moral. C'est dur à accepter. J'aurais aimé autrement. Ça me touche vraiment. Je n'arrive pas à sourire.",
+        "reglages": {
+          "temperature": 0.7,
+          "mode_clone": "timbre",
+          "ressemblance_min": 0.986,
+          "mots_rates": 0.0,
+          "verdict": "stable",
+          "teste_le": "2026-10-08"
+        }
+      }
+    },
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.987,
+      "mots_rates": 0.0,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Homme Polar": {
+    "ref_audio": "voices/H-Polar.wav",
+    "ref_text": "un excès de zèle qu'il risquait de payer cher. Il s'aventura dans le second espace, couloir, salle de bain, puis arriva dans la chambre. L'odeur lui agressa les narines à la limite du supportable. Il enfonça un interrupteur du coude. Son premier choc visuel fut le spectacle de ces fichues mouches, agglutinées par dizaines en taches sombres. Deux radiateurs électriques encadraient le lit.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.987,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Homme Podalydes": {
+    "ref_audio": "voices/H-Podalydes.wav",
+    "ref_text": "Il paraît qu'elle commence à se montrer un peu vexée. Elle imagine que la petite boule d'or de son neveu préféré a mieux à faire que d'aller voir sa grand-tante. Ainsi, Marie Ernestine entre avec sa mère chez la tante de son père. Elles se font annoncer alors qu'il y a des voitures dans la cour. Elles hésitent à rebrousser chemin parce qu'elles auraient mieux fait de prévenir de leur venue.",
+    "emotions": {
+      "excited": {
+        "ref_audio": "voices/H-Podalydes-excite.mp3",
+        "ref_text": "Oh oui !!! trop bien ! J'adore cette idée ! Incroyable, vraiment ! Ça va être génial ! Je suis trop content ! Waouh !!! super nouvelle ! C'est exactement ça ! Trop impatient ! Quelle chance ! On y est presque ! Ça promet ! J'ai hâte ! C'est fantastique ! Oui, enfin ! Trop fort ! Oh là là, trop bien ! Ça, c'est une super idée ! J'en peux plus d'attendre ! C'est exactement ce que je voulais !",
+        "reglages": {
+          "temperature": 0.5,
+          "mode_clone": "timbre",
+          "ressemblance_min": 0.98,
+          "mots_rates": 0.05,
+          "verdict": "stable",
+          "teste_le": "2026-10-08"
+        }
+      },
+      "happy": {
+        "ref_audio": "voices/H-Podalydes-joie.mp3",
+        "ref_text": "Salut, quelle belle journée ! Super nouvelle ! Trop bien, merci ! Je suis ravie de te voir. Génial, on y va ! Ça me fait super plaisir. C'est vraiment chouette. Quelle bonne surprise ! Bravo, tu as assuré ! On va s'amuser ! Bonjour, content de te voir ! Trop cool, j'adore ! C'est parfait ! On commence ? Quelle excellente idée !",
+        "reglages": {
+          "temperature": 0.5,
+          "mode_clone": "imitation",
+          "ressemblance_min": 0.983,
+          "mots_rates": 0.05,
+          "verdict": "stable",
+          "teste_le": "2026-10-08"
+        }
+      },
+      "angry": {
+        "ref_audio": "voices/H-Podalydes-colere.mp3",
+        "ref_text": "Ça suffit maintenant ! Je n'accepte pas ça. C'est inadmissible ! J'en ai assez. Pourquoi tu fais ça ? Ce n'est pas normal ! Je suis vraiment agacé. Arrête tout de suite ! Tu dépasses les bornes. Je ne suis pas d'accord. Tu plaisantes, j'espère ! Ça, c'est hors de question !",
+        "reglages": {
+          "temperature": 0.7,
+          "mode_clone": "imitation",
+          "ressemblance_min": 0.984,
+          "mots_rates": 0.05,
+          "verdict": "stable",
+          "teste_le": "2026-10-08"
+        }
+      },
+      "sad": {
+        "ref_audio": "voices/H-Podalydes-triste.mp3",
+        "ref_text": "Ça me manque beaucoup. Je ne vais pas bien. C'est vraiment dommage. Je suis un peu perdu. J'ai le cœur lourd. Je suis triste aujourd'hui. Tout semble plus calme. Je n'ai pas le moral. C'est dur à accepter. J'aurais aimé autrement. Ça me touche vraiment. Je n'arrive pas à sourire.",
+        "reglages": {
+          "temperature": 0.5,
+          "mode_clone": "timbre",
+          "ressemblance_min": 0.986,
+          "mots_rates": 0.05,
+          "verdict": "stable",
+          "teste_le": "2026-10-08"
+        }
+      }
+    },
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.983,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Femme Ockrent": {
+    "ref_audio": "voices/Femme Ockrent.mp3",
+    "ref_text": "ou de radio qu'on ne voit pas et qui donc d'ailleurs ils sont un peu jaloux de nous ce qui explique parfois la tonalité d'un article il y a ce décalage même si on fait des métiers qui se ressemblent. Moi avec le depuis longtemps vous savez moi j'ai travaillé pendant très longtemps derrière les caméras et j'ai eu la chance aussi de travailler pour des gens extrêmement célèbres notamment aux Etats-Unis et j'ai vu l'espèce de perdition absolue de désastre personnel dans la vie personnelle dans la vie familiale quand tout à coup ces choses disparaissent et donc je crois que j'ai eu une chance formidable c'est d'avoir cette expérience là sous les yeux très jeunes et donc d'avoir compris tout ce monde d'illusion d'avoir compris aussi l'énorme quantité de boulot qu'il faut mettre pour justifier en même temps cela et donc je crois que pour répondre simplement on est très sceptique ça n'empêche pas qu'on soit parfois très blessé par des revirements comme ça ou des attaques.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.985,
+      "mots_rates": 0.0,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Lyam": {
+    "ref_audio": "voices/Lyam.mp3",
+    "ref_text": "Ensuite, tous les individus qui sont arrivés après, toutes les personnes qui sont arrivées après ont été qualifiées, je dirais taxées entre guillemets, de Malabars et ça n'a gêné personne, encore moins les individus eux-mêmes qui, de toute façon, ne comprenaient pas la langue française au début. Ensuite, ça s'est perpétué, ça n'a gêné personne, donc ça s'est sacralisé. Et aujourd'hui, on peut parler d'un Malabar comme quelqu'un qui vient du nord de l'Inde, ce qui peut paraître étrange du nord de l'Inde, de supposons de New Delhi, on l'appellerait Malabar, aussi bien s'il vient du Tamil Nadu, alors que s'il vient du Tamil Nadu, il serait plutôt un Tamoul, s'il vient du Kerala, un Malabar, mais s'il vient de Bombay, ce ne serait pas évidemment un Malabar, mais tout ça est confondu, c'est un nom générique pour resituer, pour qualifier quelqu'un qui qui vient du... qui a des origines indiennes.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.976,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Femme Nizard": {
+    "ref_audio": "voices/Femme Nizard.mp3",
+    "ref_text": "que quelque chose réponde à ce qu'elle guette, un signe de vie, car il faut que la vie vienne de la peinture. Maintenant son chien se lève parce qu'il a entendu que quelqu'un arrive, ou qui n'est pas encore arrivé, mais il sait que c'est l'heure, entre 16h45 et 16h55, selon les difficultés de la circulation.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.98,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Femme AgoraModerne": {
+    "ref_audio": "voices/Femme AgoraModerne.mp3",
+    "ref_text": "La maison de l'usarche est le cœur de la politique africaine de la France. Bokassa, Félix ou Fouette-Bouani, Omar Bongo, Mobutu et tant d'autres. Faucard a un secret que l'on peut tout de suite dévoiler. Il est joignable. Jour et nuit, il reçoit et donne des coups de téléphone. Voici son bureau, de petite taille. À sa mort, il a été vidé par des hommes en costume qui ont tout pris. Qui étaient-ils ? DST, DGSE, renseignements militaires. Quoi qu'il en soit, l'endroit a été soigneusement nettoyé. À l'exception de son vieil imperméable et de ses lunettes. Comment une telle concentration de pouvoir a-t-elle été possible ?",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.978,
+      "mots_rates": 0.0,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Homme Adamsberg": {
+    "ref_audio": "voices/Homme Adamsberg.mp3",
+    "ref_text": "Donc on ne perd pas cet aspect de vue. Ça ne risque pas. J'ai parcouru son carnet d'adresse à sa recherche. Rien. Je ne pense pas qu'il s'agisse d'un ou d'une intime. HB évidemment évoque des initiales. Dans le cas d'un intime, on note seulement le prénom. On peut supposer que le tueur, si c'est de lui qu'il est question, n'est qu'une connaissance. En revanche reviennent de nombreux rendez-vous avec une femme, Juliette Roux, que je suppose être sa meilleure amie. Elle pourra peut-être nous renseigner. Rotencour, vous prenez. Adoucissez la voix, ne l'éfarouchez pas. Elle sera déjà sous le choc. On ne nous en demande pas tant, Rotencour.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.981,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Homme Afrik": {
+    "ref_audio": "voices/Homme Afrik.mp3",
+    "ref_text": "personne dans ce village ne sera plus puissant que moi, je garderai toute ma richesse pour moi seul.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.985,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Homme Tarnagoa": {
+    "ref_audio": "voices/Homme Tarnagoa.mp3",
+    "ref_text": "Alors, « Peace », c'est un texte de Penda Diouf sur les génocides des héros en Namibie. C'est un texte absolument poétique, un texte fort, donc qui est magnifiquement porté par Nani Adji Kagara. Donc voilà, j'ai été saisi par ce texte parce que Penda la lisait à Avignon il y a quatre ans, et puis nous l'avons mis en scène.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.979,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Femme Zeniter": {
+    "ref_audio": "voices/Femme Zeniter.wav",
+    "ref_text": "Ils ne pouvaient pas s'évaluer à partir de ces seuls chiffres. Si vous voulez penser en pourcentage, alors il faut en ajouter d'autres. Prenez celui-là par exemple. 33% des jeunes canards qui sont au chômage. Ou cet autre-là. 3% seulement sont diplômés dans l'enseignement supérieur. Les politiques de rééquilibrage lancées dans les années 80 n'ont pas pu effacer les inégalités entre les populations.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.988,
+      "mots_rates": 0.0,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "F-Jaguar": {
+    "ref_audio": "voices/F-Jaguar.wav",
+    "ref_text": "traversant des vergers imaginaires avec une lenteur acadienne, seulement vécu de sa tunique, en mangeant des feuilles de framboisier et en urinant sur des graines d'orge, dont on disait que la germination rapide indiquait l'arrivée précoce de l'enfant. Elle se déplaçait là où elle voulait, à l'heure qu'elle voulait, constatant ses cuisses se remplir d'eau, ses seins de lait, ses hanches s'écarter.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.984,
+      "mots_rates": 0.025,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Homme Murakami": {
+    "ref_audio": "voices/Homme Murakami.wav",
+    "ref_text": "Comme si tu te souvenais soudain que j'étais là. Je place de nouveau mes mains sur les tiennes. Leur taille est très différente, comme à chaque fois je suis surpris par leur petitesse. Je suis impressionné par le fait que tu arrives à accomplir diverses tâches avec des mains aussi délicates. Déboucher une bouteille, éplucher une mandarine, bientôt tu te mets à pleurer sans élever la voix.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.987,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Homme Noiret": {
+    "ref_audio": "voices/Homme Noiret.wav",
+    "ref_text": "des amis qui aiment arriver 5 minutes avant d'entrer en scène. Moi, Gérard Philippe avec qui j'ai beaucoup joué au TNP, jouer le Sid ou Lorenzaccio, il arrivait quand on était tous en train de descendre pour aller sur le plateau.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.983,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Homme Frank": {
+    "ref_audio": "voices/Homme Frank.wav",
+    "ref_text": "C'est dans son sac à dos, en plus de sa serviette de bain et de ses lunettes de natation, une lampe frontale puissante, de celle qu'utilisaient les coureurs, parce qu'elle passait par certains endroits du parc dépourvues d'éclairage. Et elle s'arrangeait pour en sortir avant 20 heures durant la période hivernale, car ensuite les portes fermaient jusqu'au lendemain. Frank quitta le balcon et alla jeter un coup d'œil dans la cuisine.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.982,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Homme Sharko": {
+    "ref_audio": "voices/Homme Sharko.wav",
+    "ref_text": "un excès de zèle qu'il risquait de payer cher. Il s'aventura dans le second espace, couloir, salle de bain, puis arriva dans la chambre. L'odeur lui agressa les narines à la limite du supportable. Il enfonça un interrupteur du coude. Son premier choc visuel fut le spectacle de ces fichues mouches, agglutinées par dizaines en taches sombres. Deux radiateurs électriques encadraient le lit.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.981,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Femme Raison": {
+    "ref_audio": "voices/Femme Raison.wav",
+    "ref_text": "pour ne pas vraiment s'apercevoir de ce qu'il se passait. Le thé fut servi et Marianne avait déjà été déçue plus d'une fois en entendant frapper à une porte voisine, quand un grand bruit, qui cette fois-ci ne pouvait pas provenir d'une autre maison, se fit soudainement entendre. Tout était silencieux, ce qu'elle fut incapable de supporter pendant plus de quelques secondes.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.984,
+      "mots_rates": 0.0,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "H-Marielle-colere": {
+    "ref_audio": "voices/H-Marielle-colere.mp3",
+    "ref_text": "Ce que vous allez y foutre rue Gustave Flaubert. M'emmerdez pas c'est tout ce que je vous demande ! En quel honneur !",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.971,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "H-Michel Simon": {
+    "ref_audio": "voices/H-Michel Simon.mp3",
+    "ref_text": "Je n'envisage pas, j'envisage pas l'avenir. Ce n'est pas pensable. Cette prolifération de l'être humain, qui est pire que celle du rat, chose d'éffroyable. Les bêtes sont merveilleuses parce qu'elles sont en contact direct avec la nature.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.986,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Femme Coco": {
+    "ref_audio": "voices/Femme Coco.mp3",
+    "ref_text": "est ce que vous connaissez cette marque anifa je pense la majorité des malédiqués connaissent cette robe vraiment trop magnifique l'été dernier je la voyais partout moi je suis une crocheteuse j'ai essayé de la faire c'était trop dur d'ailleurs si vous avez des tutos moi je suis preneuse et en fait c'est tellement créatif tu sais que si tu mets une de ces robes c'est c'est quasi impossible de trouver quelqu'un qui a la même robe que toi.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.984,
+      "mots_rates": 0.025,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Femme Afro diaspora": {
+    "ref_audio": "voices/Femme Afro diaspora.mp3",
+    "ref_text": "Encourager les jeunes, n'abusez pas de nos dames, n'abusez pas de nos dames qui sont demain l'avenir de la RDC, qui sont demain le maire.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.984,
+      "mots_rates": 0.0,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Femme Tribune": {
+    "ref_audio": "voices/Femme Tribune.mp3",
+    "ref_text": "Pour moi, l'histoire des Noirs, c'est super important parce que c'est l'occasion de raconter des parcours d'hommes et de femmes inspirants qui ont changé la narrative, qui ont changé l'histoire à l'échelle mondiale par rapport aux Noirs, qu'elles soient afro-américaines ou même africaines ou afro-descendantes.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.986,
+      "mots_rates": 0.025,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Femme Theresa Claiborne": {
+    "ref_audio": "voices/Femme Theresa Claiborne.mp3",
+    "ref_text": "Listen, one of the best compliments I ever had was from a guy that I was flying with. There were three of us women, this was in the military, there were three of us women on the airplane. I was the captain and then I had a first officer that was a woman and then the navigator was also a woman. And he was the only male, he was the boom operator. And we got down and we were debriefing and he says, can I say something? And I was like, of course you can say something.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.977,
+      "mots_rates": 0.0,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Femme Simone Signoret": {
+    "ref_audio": "voices/Femme Simone Signoret.mp3",
+    "ref_text": "Et puis, bon, moi, ma mère me disait, t'as ton vieux taille crayon, il ira très bien, et puis ta, ta gomme, ben, t'as une gomme. C'était déjà le gadget, dans le fond. Je me rends compte maintenant, je viens d'y penser maintenant. Il y avait les filles qui avaient les gadgets et celles qui ne les avaient pas. Et moi, je n'avais pas les gadgets. Et les gadgets, finalement, ça peut aller du cachemire au bas de soie en passant par la gomme.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.983,
+      "mots_rates": 0.0,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Femme Romy Schneider": {
+    "ref_audio": "voices/Femme Romy Schneider.mp3",
+    "ref_text": "Chaque jour, tous les jours, imaginez Paris ou toute autre ville coupée en deux. Comment le film sera reçu en Allemagne, je ne sais pas, je l'espère bien. Je l'espère beaucoup, car c'est un beau film, préoccupé dans ma vie personnelle, dans ma vie privée, c'est vrai. Tourne moins de films qu'avant et...",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.986,
+      "mots_rates": 0.0,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Radio-40": {
+    "ref_audio": "voices/Radio-40.mp3",
+    "ref_text": "L'hélicoptère Hobb-Miffel continue ses essais effectuant un vol libre de 5 mètres. Le ballonnet substantateur placé au-dessus de l'appareil est destiné à assurer la stabilité de l'hélicoptère.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.983,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-08"
+    }
+  },
+  "Homme Akhenaton": {
+    "ref_audio": "voices/Homme Akhenaton.mp3",
+    "ref_text": "je pense qu'ils partagent quelque chose, c'est la réécriture de l'histoire. Un génocide qui est transformé en épopée glorieuse. C'est fou. Moi déjà un génocide, ça me retourne le ventre, mais un génocide qui en plus de ça...",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.988,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-09"
+    }
+  },
+  "Homme Alcool": {
+    "ref_audio": "voices/Homme Alcool.mp3",
+    "ref_text": "Mon fils, je le voyais une fois tous les quinze jours, c'est le droit des papas, sauf que sa maman était partie trop loin. Donc tous les quinze jours, j'allais le chercher mais je le laissais à ma mère parce que moi je travaillais. Malheureusement, à cause de l'alcool, j'ai reproduit la seule chose que je connaissais dans la vie, mon père. Donc je suis devenu autoritaire avec mon fils.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.98,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-09"
+    }
+  },
+  "Femme Bambi": {
+    "ref_audio": "voices/Femme Bambi.mp3",
+    "ref_text": "À la base, je ne suis pas jalouse, mais fais pas le con. Bonjour, je m'appelle Bambi. Mon second prénom est Ambre, mais mes proches m'appellent aussi Bichette. Je suis née le 11 septembre, soit le même jour qu'une date qu'on préférerait oublier. Mon signe astrologique est Vierge.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.983,
+      "mots_rates": 0.0,
+      "verdict": "stable",
+      "teste_le": "2026-10-09"
+    }
+  },
+  "Femme French Connection": {
+    "ref_audio": "voices/Femme French Connection.mp3",
+    "ref_text": "Mon mari, c'était le chimiste du plus grand trafiquant de drogue de Marseille. Vous gagnez 150 000 euros par mois et vous risquez 5 ans de prison. Qui sait qui aurait patenté le diable ?",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.965,
+      "mots_rates": 0.05,
+      "verdict": "correcte",
+      "teste_le": "2026-10-09"
+    }
+  },
+  "Homme UNION AFRICAINE": {
+    "ref_audio": "voices/Homme UNION AFRICAINE.mp3",
+    "ref_text": "qui ai découpé Lumumba et je l'ai mis dans l'acide. J'ai même gardé ses dents en souvenir. Comment peux-tu comprendre que un monsieur, un blanc, en Belgique,",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.986,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-09"
+    }
+  },
+  "Homme LeFred": {
+    "ref_audio": "voices/Homme LeFred.mp3",
+    "ref_text": "Si ça continue avec la crise, on va être obligés d'aller chasser pour se nourrir. Le souci, c'est que je ne sais pas où vivent les spaghettis bolognaises, moi. Il va falloir que je demande à l'achat de GPT ou un truc comme ça. Enfin, moi, je dis ça, je dis rien.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.964,
+      "mots_rates": 0.05,
+      "verdict": "correcte",
+      "teste_le": "2026-10-09"
+    }
+  },
+  "Femme mode": {
+    "ref_audio": "voices/Femme mode.mp3",
+    "ref_text": "Cette vidéo devrait vous faire plaisir parce qu'il y a une paire de chaussures en particulier que vous adorez et qui ne va malheureusement avec aucun autre jean et pour laquelle vous me demandez toujours mais avec quel jean vous allez pouvoir l'associer.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.986,
+      "mots_rates": 0.0,
+      "verdict": "stable",
+      "teste_le": "2026-10-09"
+    }
+  },
+  "Femme Nathalie Michaud": {
+    "ref_audio": "voices/Femme Nathalie Michaud.mp3",
+    "ref_text": "En cherchant du travail, j'ai trouvé un, par Pôle emploi, j'ai trouvé un, un contrat de, de femme de ménage dans un hôtel. Ce contrat était de travailler au rendement.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.98,
+      "mots_rates": 0.0,
+      "verdict": "stable",
+      "teste_le": "2026-10-09"
+    }
+  },
+  "Homme Sinik": {
+    "ref_audio": "voices/Homme Sinik.mp3",
+    "ref_text": "Mon premier gros chèque ouais, je me rappelle évidemment. Enfin, gros chèque, c'est relatif. C'était quoi. C'était une avance de BMG en édition.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.983,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-10"
+    }
+  },
+  "Femme Sunette": {
+    "ref_audio": "voices/Femme Sunette.mp3",
+    "ref_text": "Viens on en parle. En vrai, Suno, c'est pas juste écrire un prompt et puis obtenir un son directement. Moi, je commence toujours par un dessin et puis je la développe progressivement. Je commence par un prompt basique pour poser une direction musicale et ensuite j'affine le prompt en modifiant le style.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.987,
+      "mots_rates": 0.0,
+      "verdict": "stable",
+      "teste_le": "2026-10-10"
+    }
+  },
+  "Femme centenaire": {
+    "ref_audio": "voices/Femme centenaire.mp3",
+    "ref_text": "C'est pour les vieux la sieste, c'est pas pour moi. Je ne me sens pas vieille. Je suis la centenaire de bois colombe. Je suis née le jour de Noël. Oh là là, il nous ferait peur. Ha ha ha ha.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.966,
+      "mots_rates": 0.0,
+      "verdict": "correcte",
+      "teste_le": "2026-10-10"
+    }
+  },
+  "Femme Balasko": {
+    "ref_audio": "voices/Femme Balasko.mp3",
+    "ref_text": "Mon cher Iliès, au nom des élèves et des professeurs du lycée Saint-Albert-le-Grand-de-Chablis, je tiens à vous présenter nos excuses les plus sincères au sujet de ce malentendu.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.978,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-10"
+    }
+  },
+  "Homme jeune banlieue": {
+    "ref_audio": "voices/Homme jeune banlieue.mp3",
+    "ref_text": "C'est pas grave, c'est oublié madame. Ecoutez madame, moi je viens d'arriver ici, je connais pas personne, j'ai pas le numéro de votre soeur, j'aimerais bien l'appeler mais je la connais pas.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.981,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-10"
+    }
+  },
+  "Homme Daron rebeu": {
+    "ref_audio": "voices/Homme Daron rebeu.mp3",
+    "ref_text": "Quelque chose que les Arabes font de manière tout à fait naturelle et que les Français trouvent parfois surprenant. Quand un invité repart dans les familles arabes, et tu l'as peut-être remarqué, si tu as déjà fréquenté des familles maghrébines, ou du Moyen-Orient, quand l'invité dit « Allez, je vais y aller », il ne part pas seul.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.989,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-10"
+    }
+  },
+  "Homme frère machin": {
+    "ref_audio": "voices/Homme frère machin.mp3",
+    "ref_text": "Bonjour, Eliès. Je vous présente Sœur Catherine du Saint-Rosaire. C'est la mémoire du lycée, elle est là depuis l'âge de 17 ans. Et ici, tout le monde l'appelle...",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.99,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-10"
+    }
+  },
+  "Femme sandwich": {
+    "ref_audio": "voices/Femme sandwich.mp3",
+    "ref_text": "Je commence par mettre un petit peu de pâte de pistache. Je tartine généreusement. Ensuite, j'ajoute des tranches bien fines de mortadelle. Je finis par ma burrata maison. Je remets un petit peu de pistache pour le kiff. Et là, je peux te dire que j'ai un de ces sandwiches.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.971,
+      "mots_rates": 0.0,
+      "verdict": "stable",
+      "teste_le": "2026-10-10"
+    }
+  },
+  "Homme Noth": {
+    "ref_audio": "voices/Homme Noth.wav",
+    "ref_text": "Sans rien voir du tout. L'idée de m'anéantir sans cette transe récapitulative me désolerait. Par précaution, je vais essayer de m'offrir ce clip par l'écriture. Ça me rappelle ma nièce, Alicia, 14 ans.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.984,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-10"
+    }
+  },
+  "Homme Mitterand": {
+    "ref_audio": "voices/Homme Mitterand.mp3",
+    "ref_text": "Et ensuite, bon ben ces gens-là, ils... ils se sont installés, ils ont fondé leur famille très souvent, ils ont parfois épousé des femmes françaises, euh ils ont vécu, et ça devient très difficile de les traiter sans nuance.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "imitation",
+      "ressemblance_min": 0.983,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-10"
+    }
+  },
+  "Homme Villepin": {
+    "ref_audio": "voices/Homme Villepin.mp3",
+    "ref_text": "Oui, pour la plupart, il y a effectivement une fracture entre les générations qui ne cesse de s'accroître. Et nous laissons à cette génération une dette écologique, une dette financière. Et je crois qu'il faut prendre au sérieux son inquiétude.",
+    "reglages": {
+      "temperature": 0.7,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.98,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-10"
+    }
+  },
+  "Homme Strauss-Kahn": {
+    "ref_audio": "voices/Homme Strauss-Kahn.mp3",
+    "ref_text": "notamment dans la destruction de la gauche aujourd'hui. Mélenchon a un grand talent, oratoire, une certaine culture, une capacité à mobiliser les foules, mais il ne l'a pas mis à la disposition de la gauche.",
+    "reglages": {
+      "temperature": 0.5,
+      "mode_clone": "timbre",
+      "ressemblance_min": 0.98,
+      "mots_rates": 0.05,
+      "verdict": "stable",
+      "teste_le": "2026-10-10"
+    }
+  },
+  "enfant": {
+    "ref_audio": "voices/enfant.mp3",
+    "ref_text": "Alors que la diversité des variétés végétales est la clé pour notre santé et notre sécurité alimentaire, seulement 5% des plantes comestibles sont cultivées et commercialisées par les multinationales agroalimentaires."
+  }
+}

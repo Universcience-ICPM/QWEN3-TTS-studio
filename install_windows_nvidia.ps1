@@ -1,13 +1,15 @@
 [CmdletBinding()]
 param(
     [ValidateSet("cu128", "cu126", "cu121")]
-    [string]$CudaWheel = "cu128"
+    [string]$CudaWheel = "cu128",
+    [switch]$Update
 )
 
 $ErrorActionPreference = "Stop"
 $ProjectDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $VenvDir = Join-Path $ProjectDir ".venv-windows"
 $PythonExe = Join-Path $VenvDir "Scripts\python.exe"
+$VenvCreated = $false
 
 Set-Location $ProjectDir
 
@@ -36,22 +38,31 @@ if (-not (Test-Path $PythonExe)) {
     if ($LASTEXITCODE -ne 0) {
         throw "La creation de l'environnement Python a echoue."
     }
+    $VenvCreated = $true
 }
 
-& $PythonExe -m pip install --upgrade pip setuptools wheel
-if ($LASTEXITCODE -ne 0) {
-    throw "La mise a jour de pip a echoue."
+if ($VenvCreated -or $Update) {
+    & $PythonExe -m pip install --upgrade pip setuptools wheel
+    if ($LASTEXITCODE -ne 0) {
+        throw "La mise a jour de pip a echoue."
+    }
+}
+
+$UpgradeArgs = @()
+if ($Update) {
+    $UpgradeArgs += "--upgrade"
+    Write-Host "Mode mise a jour explicite active." -ForegroundColor Yellow
 }
 
 Write-Host "Installation de PyTorch CUDA ($CudaWheel)..." -ForegroundColor Cyan
-& $PythonExe -m pip install --upgrade torch torchaudio --index-url "https://download.pytorch.org/whl/$CudaWheel"
+& $PythonExe -m pip install @UpgradeArgs torch torchaudio --index-url "https://download.pytorch.org/whl/$CudaWheel"
 if ($LASTEXITCODE -ne 0) {
     throw "L'installation de PyTorch CUDA a echoue. Essayez un autre -CudaWheel."
 }
 
 Write-Host "Installation de botQwen et Qwen3-TTS..." -ForegroundColor Cyan
 $Requirements = Join-Path $ProjectDir "requirements-windows-nvidia.txt"
-& $PythonExe -m pip install --upgrade -r $Requirements
+& $PythonExe -m pip install @UpgradeArgs -r $Requirements
 if ($LASTEXITCODE -ne 0) {
     throw "L'installation des dependances botQwen a echoue."
 }

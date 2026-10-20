@@ -14,6 +14,7 @@ huggingface/
 .venv-windows/
 env_qwen/
 venv/
+.stable-audio-3/
 
 # Legacy prototypes (the supported entry point is botQwen2.py)
 /main.py
@@ -22,6 +23,7 @@ venv/
 /botQwen1-copie.py
 /botQwen copie.py
 /botQwen2 copie.py
+/sfx_app copie.py
 
 # Generated and temporary files
 temp_*/
@@ -31,6 +33,8 @@ temp_convert_*.wav
 /*.m4a
 /*.flac
 /conversation_export.json
+.botqwen-stop
+.botqwen-windows.pid
 *.log
 
 # User data (keep folder structure)

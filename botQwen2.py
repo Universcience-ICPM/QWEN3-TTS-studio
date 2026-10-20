@@ -235,6 +235,7 @@ _read_progress = ""
 
 # ── Modèles ────────────────────────────────────────────────────────────────
 _MODELS_DIR = _SCRIPT_DIR / "models"
+_STOP_REQUEST_FILE = _SCRIPT_DIR / ".botqwen-stop"
 
 
 def _find_best_tts_model() -> str | Path:
@@ -248,7 +249,7 @@ _TTS_MODEL_TYPE: str = infer_model_type(TTS_MODEL_PATH)
 _stt             = None
 _tts             = None
 _tts_loaded_path : str | Path | None = None
-_tts_switch_lock = threading.Lock()     # évite les chargements concurrents
+_tts_switch_lock = threading.RLock()    # protège chargement ET génération
 _models_status   = f"⏳ Chargement en cours · {_runtime.display_name}…"
 
 # ── Fréquence d'échantillonnage TTS ────────────────────────────────────────
@@ -276,19 +277,67 @@ def _load_models():
     try:
         print(f"[LOAD] TTS en cours depuis {TTS_MODEL_PATH}…", flush=True)
         _models_status = _models_status.replace("⏳ TTS…", "⏳ Chargement TTS…")
-        _tts             = _runtime.load_tts(TTS_MODEL_PATH)
-        _tts_loaded_path = TTS_MODEL_PATH
+        with _tts_switch_lock:
+            _tts             = _runtime.load_tts(TTS_MODEL_PATH)
+            _tts_loaded_path = TTS_MODEL_PATH
         print("[LOAD] TTS OK ✅", flush=True)
         _models_status = f"✅ TTS Qwen3 prêt · {_runtime.display_name}" + (
             f"  ·  ✅ STT {_runtime.stt_name} prêt"
             if _stt else "  ·  ⚠️ STT indisponible")
-        _rebuild_clone_prompt()
     except Exception as exc:
         print(f"[LOAD] TTS ❌ : {exc}", flush=True)
         _models_status = f"❌ TTS : {exc}"
 
 
 threading.Thread(target=_load_models, daemon=True).start()
+
+
+def _ensure_tts_model(want_clone: bool) -> bool:
+    """Charge de façon synchrone le modèle requis par la prochaine génération."""
+    global _tts, _TTS_MODEL_TYPE, _tts_loaded_path, _models_status
+
+    target_type = "base" if want_clone else "custom"
+    target_path = _runtime.tts_source(target_type)
+    if target_path is None:
+        _models_status = f"❌ Modèle TTS {target_type} introuvable"
+        print(f"[TTS SWITCH] {_models_status}", flush=True)
+        return False
+
+    with _tts_switch_lock:
+        if (
+            _tts is not None
+            and _tts_loaded_path == target_path
+            and _TTS_MODEL_TYPE == target_type
+        ):
+            return True
+
+        model_label = "Base (clonage)" if want_clone else "CustomVoice (standard)"
+        _models_status = f"⏳ Chargement TTS {model_label}…"
+        print(f"[TTS SWITCH] → {_runtime.source_label(target_path)}", flush=True)
+        try:
+            if _runtime.release_before_tts_load and _tts is not None:
+                previous_tts = _tts
+                _tts = None
+                _tts_loaded_path = None
+                del previous_tts
+                _runtime.release_tts()
+            new_tts = _runtime.load_tts(target_path)
+            _tts = new_tts
+            _tts_loaded_path = target_path
+            _TTS_MODEL_TYPE = infer_model_type(target_path)
+            if _TTS_MODEL_TYPE != target_type:
+                raise RuntimeError(
+                    f"le modèle chargé est de type {_TTS_MODEL_TYPE}, attendu {target_type}"
+                )
+            _models_status = f"✅ TTS {model_label} prêt · {_runtime.display_name}"
+            print(f"[TTS SWITCH] OK ✅  type={_TTS_MODEL_TYPE}", flush=True)
+            return True
+        except Exception as exc:
+            _tts = None
+            _tts_loaded_path = None
+            _models_status = f"❌ Chargement TTS échoué : {exc}"
+            print(f"[TTS SWITCH] ❌ {exc}", flush=True)
+            return False
 
 
 def _switch_tts_model(want_clone: bool) -> None:
@@ -299,46 +348,11 @@ def _switch_tts_model(want_clone: bool) -> None:
     Le chargement se fait dans un thread pour ne pas bloquer l'UI.
     _models_status est mis à jour en continu → affiché via le timer Gradio.
     """
-    global _tts, _TTS_MODEL_TYPE, _tts_loaded_path, _models_status
-
-    target_type = "base" if want_clone else "custom"
-    target_path = _runtime.tts_source(target_type)
-
-    if target_path is None:
-        print(f"[TTS SWITCH] Modèle cible introuvable (want_clone={want_clone})", flush=True)
-        return  # modèle cible absent → on garde l'actuel
-
-    if _tts_loaded_path == target_path:
-        return  # déjà le bon modèle en RAM
-
-    def _do_switch():
-        global _tts, _TTS_MODEL_TYPE, _tts_loaded_path, _models_status
-        with _tts_switch_lock:
-            if _tts_loaded_path == target_path:
-                return  # double-check dans le lock (thread concurrent)
-            model_label = "Base (clonage)" if want_clone else "CustomVoice (standard)"
-            _models_status = f"⏳ Chargement TTS {model_label}…"
-            print(f"[TTS SWITCH] → {_runtime.source_label(target_path)}", flush=True)
-            try:
-                if _runtime.release_before_tts_load and _tts is not None:
-                    previous_tts = _tts
-                    _tts = None
-                    _tts_loaded_path = None
-                    del previous_tts
-                    _runtime.release_tts()
-                new_tts = _runtime.load_tts(target_path)
-                _tts             = new_tts
-                _tts_loaded_path = target_path
-                _TTS_MODEL_TYPE  = infer_model_type(target_path)
-                _models_status = (
-                    f"✅ TTS {model_label} prêt · {_runtime.display_name}"
-                )
-                print(f"[TTS SWITCH] OK ✅  type={_TTS_MODEL_TYPE}", flush=True)
-            except Exception as exc:
-                _models_status = f"❌ Chargement TTS échoué : {exc}"
-                print(f"[TTS SWITCH] ❌ {exc}", flush=True)
-
-    threading.Thread(target=_do_switch, daemon=True).start()
+    threading.Thread(
+        target=_ensure_tts_model,
+        args=(want_clone,),
+        daemon=True,
+    ).start()
 
 
 # ── Bibliothèque de voix clonées ──────────────────────────────────────────
@@ -354,6 +368,60 @@ _clone_ref_audio: str  = ""
 _clone_ref_text : str  = ""
 _clone_status   : str  = "⏸ Aucun profil vocal — créez-en un ci-dessous"
 _use_clone      : bool = False
+
+# ── Réglages de chaque voix clonée (banc d'essai banc_voix/banc_bibliotheque.command) ─────────────
+# Le banc écrit, pour chaque voix de voices_qwen.json (et chaque voix d'émotion), une clé « reglages » :
+#   température : 0.5 = voix régulière, qui ne « dérive » pas vers une autre voix ; 0.7 = plus vivante ;
+#   mode_clone  : « imitation » (la voix de référence ET son texte guident la voix : le plus ressemblant)
+#                 ou « timbre » (seul le timbre est gardé : pour une référence dans une autre langue).
+# Une voix pas encore testée : TEMPERATURE_CLONE_DEFAUT, et le mode choisi selon la langue de sa référence.
+TEMPERATURE_CLONE_DEFAUT = 0.5
+
+_MOTS_FR = set("le la les un une des de du et est je tu il elle nous vous que qui pas ne en dans pour sur "
+               "avec mais ou au aux ce cette son sa ses mon ma mes très plus été était".split())
+_MOTS_EN = set("the a an and of to is was i you he she we they that this with for on in it not but "
+               "my his her our there were have had be are".split())
+
+
+def _langue_du_texte(texte: str) -> str:
+    """« fr » ou « en », d'après les petits mots les plus courants."""
+    mots = re.findall(r"[a-zàâçéèêëîïôûùüÿœ']+", (texte or "").lower())
+    fr = sum(m in _MOTS_FR for m in mots)
+    en = sum(m in _MOTS_EN for m in mots)
+    return "fr" if fr >= en else "en"
+
+
+def _reglages_voix(profile_name: str, emotion: str, ref_audio: str, ref_text: str) -> tuple[float, str]:
+    """(température, mode) pour la référence réellement utilisée (voix d'émotion ou voix neutre)."""
+    prof = _clone_profiles.get(profile_name) or {}
+    reglages = {}
+    if emotion and emotion != "neutral":
+        em = (prof.get("emotions") or {}).get(emotion) or {}
+        if em.get("ref_audio") and _resolve_audio(em["ref_audio"]) == ref_audio:
+            reglages = em.get("reglages") or {}
+    if not reglages and (not ref_audio or _resolve_audio(prof.get("ref_audio", "")) == ref_audio):
+        reglages = prof.get("reglages") or {}
+    langue_sortie = {"french": "fr", "auto": "fr", "english": "en"}.get(str(_tts_language).lower(), "")
+    try:
+        temperature = float(reglages.get("temperature", TEMPERATURE_CLONE_DEFAUT))
+    except (TypeError, ValueError):
+        temperature = TEMPERATURE_CLONE_DEFAUT
+    mode = reglages.get("mode_clone") if langue_sortie == "fr" else None   # le banc a mesuré en français
+    if mode not in ("imitation", "timbre"):
+        # une référence dans une autre langue que la voix fabriquée : en « imitation », elle avale
+        # ou déforme des mots (banc d'essai du 7/10/2026) → on ne garde que le timbre
+        mode = "imitation" if not ref_text or not langue_sortie or _langue_du_texte(ref_text) == langue_sortie \
+            else "timbre"
+    return temperature, mode
+
+
+def _resume_reglages(profile_name: str) -> str:
+    reglages = (_clone_profiles.get(profile_name) or {}).get("reglages") or {}
+    if not reglages:
+        return f"🌡 {TEMPERATURE_CLONE_DEFAUT} (pas encore testée au banc d'essai)"
+    verdict = str(reglages.get("verdict", "")).split(" :")[0]
+    return (f"🌡 {reglages.get('temperature')} · {reglages.get('mode_clone')}"
+            + (f" · {verdict}" if verdict else ""))
 
 
 def _clone_choices() -> list[str]:
@@ -409,7 +477,7 @@ def fn_select_clone(name: str):
     _clone_name      = name
     _clone_ref_audio = prof.get("ref_audio", "")
     _clone_ref_text  = prof.get("ref_text",  "")
-    _clone_status    = f"✅ Profil « {name} » sélectionné"
+    _clone_status    = f"✅ Profil « {name} » sélectionné · {_resume_reglages(name)}"
     return _clone_status
 
 
@@ -605,26 +673,26 @@ def _build_synth_kwargs(text: str, seg_emotion: str, seg_voice: str,
     Construit les kwargs pour _run_generate_audio.
 
     Voix clonée  → ref_audio + ref_text spécifiques à l'émotion si disponibles,
-                   sinon sample neutre. PAS de voice/instruct/language (le sample
-                   de référence porte l'émotion et la langue nativement).
+                   sinon sample neutre. La langue de sortie reste forcée par
+                   l'interface ; voice/instruct ne sont pas transmis au modèle Base.
     Voix standard → voice (CustomVoice uniquement) + instruct (émotions) + language forcé.
     """
     kw: dict = {"text": text}
     if use_clone and clone_profile_name:
         ref_audio, ref_text = _get_ref_for_emotion(clone_profile_name, seg_emotion)
         if ref_audio:
-            kw["ref_audio"] = ref_audio
-            kw["ref_text"]  = ref_text
-            return kw      # émotion et langue portées par le sample de référence
+            temperature, mode = _reglages_voix(clone_profile_name, seg_emotion, ref_audio, ref_text)
+            kw["ref_audio"]   = ref_audio
+            kw["ref_text"]    = ref_text if mode == "imitation" else None   # « timbre » : sans le texte
+            kw["temperature"] = temperature
+            kw["language"]    = _tts_language
+            return kw      # émotion portée par le sample, langue forcée par l'interface
     # ── Voix standard (ou fallback si aucun ref_audio résolu) ─────────────────
-    # voice : uniquement si le modèle CustomVoice est chargé
-    if _TTS_MODEL_TYPE == "custom":
-        kw["voice"] = seg_voice
-    # instruct : émotion via instruction naturelle (CustomVoice uniquement)
-    if _TTS_MODEL_TYPE == "custom":
-        instruct = _EMOTION_TO_INSTRUCT.get(seg_emotion, "") or None
-        if instruct:
-            kw["instruct"] = instruct
+    # _run_generate_audio garantit que CustomVoice sera chargé avant l'appel.
+    kw["voice"] = seg_voice
+    instruct = _EMOTION_TO_INSTRUCT.get(seg_emotion, "") or None
+    if instruct:
+        kw["instruct"] = instruct
     # language : forcé en français pour une meilleure prosodie
     kw["language"] = _tts_language
     return kw
@@ -760,12 +828,21 @@ _TTS_TMP_DIR: str = tempfile.mkdtemp(prefix="qwen_tts_session_")
 def _run_generate_audio(**kwargs) -> np.ndarray | None:
     """Génère un tableau audio avec le backend actif."""
     try:
-        return _runtime.generate_audio(
-            model=_tts,
-            model_type=_TTS_MODEL_TYPE,
-            temp_dir=_TTS_TMP_DIR,
-            kwargs=kwargs,
-        )
+        want_clone = bool(kwargs.get("ref_audio"))
+        expected_type = "base" if want_clone else "custom"
+        with _tts_switch_lock:
+            if not _ensure_tts_model(want_clone):
+                return None
+            if _TTS_MODEL_TYPE != expected_type:
+                raise RuntimeError(
+                    f"modèle TTS {_TTS_MODEL_TYPE} actif, {expected_type} requis"
+                )
+            return _runtime.generate_audio(
+                model=_tts,
+                model_type=_TTS_MODEL_TYPE,
+                temp_dir=_TTS_TMP_DIR,
+                kwargs=kwargs,
+            )
     except Exception as exc:
         print(f"[Qwen TTS generate] {exc}", flush=True)
         return None
@@ -773,8 +850,6 @@ def _run_generate_audio(**kwargs) -> np.ndarray | None:
 
 def _qwen_synth(text: str, voice: str, emotion: str = "") -> np.ndarray | None:
     """Synthèse voix standard — délègue à _build_synth_kwargs."""
-    if _tts is None:
-        return None
     kw = _build_synth_kwargs(text, emotion, voice, False, "")
     return _run_generate_audio(**kw)
 
@@ -786,8 +861,6 @@ def _qwen_clone_synth(text: str, emotion: str = "",
     L'émotion est exprimée via le sample de référence (ref_audio),
     PAS via instruct (ignoré par le modèle Base en mode clonage).
     """
-    if _tts is None:
-        return None
     name = profile_name or _clone_name
     kw = _build_synth_kwargs(text, emotion, "", True, name)
     if "ref_audio" not in kw:
@@ -927,8 +1000,6 @@ def fn_s2s_resynthesize(text: str, emotion: str, voice: str,
     Réutilise le même chemin que fn_tts_direct — marqueurs [Ryan]/[triste] etc.
     restent utilisables si l'utilisateur les ajoute à la main dans le texte.
     """
-    if _tts is None:
-        return None, "❌ TTS pas encore chargé — patientez…"
     if not text or not text.strip():
         return None, "❌ Aucun texte à synthétiser"
 
@@ -1140,6 +1211,14 @@ def fn_poll() -> tuple:
         _read_status,
         _read_progress,
     )
+
+
+def fn_shutdown_server():
+    """Ferme Gradio après avoir laissé le temps à la réponse UI de partir."""
+    def request_stop():
+        _STOP_REQUEST_FILE.touch()
+
+    threading.Timer(0.5, request_stop).start()
 
 
 def fn_set_emotion(emotion: str):
@@ -1393,8 +1472,6 @@ def _reading_thread(paths: list[str], voice: str, out_dir: Path,
 def fn_start_reading(files, voice: str, out_dir: str,
                      use_clone: bool, clone_name: str):
     global _read_active, _read_status, _read_progress
-    if _tts is None:
-        return "❌ TTS pas encore chargé — patientez…", ""
     if not files:
         return "❌ Aucun fichier sélectionné", ""
 
@@ -1556,8 +1633,6 @@ def fn_tts_direct(text: str, voice: str, use_clone: bool, clone_name: str) -> st
     Renvoie un chemin WAV prêt à jouer.
     """
     import gc
-    if _tts is None:
-        return None
     text = apply_pronunciation(text.strip())
     if not text:
         return None
@@ -1755,11 +1830,11 @@ THEME = gr.themes.Soft(
 # (pas besoin du TTS pour ça — lecture JSON uniquement)
 _rebuild_clone_prompt()
 
-with gr.Blocks(theme=THEME, title="botQwen — Assistant vocal") as demo:
+with gr.Blocks(theme=THEME, title="Voix - Assistant vocal local") as demo:
 
     ctx_state = gr.State("")
 
-    gr.Markdown("# 🤖 botQwen — Assistant vocal\n"
+    gr.Markdown("# Voix\n"
                 f"*{_runtime.stt_name} · Ollama LLM · Qwen3-TTS · "
                 f"{_runtime.display_name}*")
 
@@ -1845,6 +1920,11 @@ with gr.Blocks(theme=THEME, title="botQwen — Assistant vocal") as demo:
             models_lbl = gr.Textbox(
                 value=_models_status, label="Modèles",
                 interactive=False, max_lines=1)
+            shutdown_btn = gr.Button(
+                "■ Arrêter Voix",
+                variant="stop",
+                size="sm",
+            )
 
         # ════════════════════════════════════════════════════════════════
         #  ONGLETS
@@ -2338,6 +2418,7 @@ with gr.Blocks(theme=THEME, title="botQwen — Assistant vocal") as demo:
     refresh_btn.click(fn_refresh_models, outputs=[model_dd])
     clear_btn.click(fn_clear, outputs=[chatbot, audio_out])
     export_btn.click(fn_export, inputs=[chatbot], outputs=[export_dl])
+    shutdown_btn.click(fn_shutdown_server)
 
     # ── Dictionnaire : ajout / suppression ────────────────────────────────
     lex_add_btn.click(
@@ -2372,9 +2453,24 @@ with gr.Blocks(theme=THEME, title="botQwen — Assistant vocal") as demo:
 #  LANCEMENT
 # ══════════════════════════════════════════════════════════════════════════
 
+
+def _watch_shutdown_request() -> None:
+    """Observe la demande d'arrêt créée par l'UI ou le lanceur Windows."""
+    while True:
+        if _STOP_REQUEST_FILE.exists():
+            _STOP_REQUEST_FILE.unlink(missing_ok=True)
+            while not demo.is_running:
+                time.sleep(0.1)
+            print("[SERVER] Arrêt propre demandé.", flush=True)
+            demo.close()
+            return
+        time.sleep(0.5)
+
 if __name__ == "__main__":
+    _STOP_REQUEST_FILE.unlink(missing_ok=True)
+    threading.Thread(target=_watch_shutdown_request, daemon=True).start()
     print(f"\n{'='*56}")
-    print(f"  botQwen  ·  Gradio {gr.__version__}")
+    print(f"  Voix     ·  Gradio {gr.__version__}")
     print(f"  Backend  ·  {_runtime.display_name}")
     print("  → http://127.0.0.1:7860")
     print("  Ctrl+C pour quitter")
